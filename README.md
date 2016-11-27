@@ -4,29 +4,25 @@
 
 ###必要なテーブルとカラム
 
-  1. User
-    1. id
-    1. name
-    1. group_id
+  1. Usersテーブル
+    1. name(string)
+    1. group_id(references)
 
-  1. Message
-    1. id
-    1. body
-    1. image
-    1. group_id
-    1. user_id
+  1. Messagesテーブル
+    1. body(text)
+    1. image(text)
+    1. group_id(references)
+    1. user_id(references)
 
-  1. Group
-    1. id
-    1. name
-    1. detail
-    1. user_id
-    1. message_id
+  1. Groupsテーブル
+    1. name(string)
+    1. detail(text)
+    1. user_id(references)
+    1. message_id(references)
 
-  1. UserGroup
-    1. id
-    1. user_id
-    1. group_id
+  1. UserGroupsテーブル
+    1. user_id(references)
+    1. group_id(references)
 
 ###Relation設定
   - User hasMany Message

@@ -1,24 +1,76 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##DB設計
 
-Things you may want to cover:
+###必要なテーブルとカラム
 
-* Ruby version
+  1. User
+    1. id
+    1. name
+    1. group_id
 
-* System dependencies
+  1. Message
+    1. id
+    1. body
+    1. image
+    1. group_id
+    1. user_id
 
-* Configuration
+  1. Group
+    1. id
+    1. name
+    1. detail
+    1. user_id
+    1. message_id
 
-* Database creation
+  1. UserGroup
+    1. id
+    1. user_id
+    1. group_id
 
-* Database initialization
+###Relation設定
+  - User hasMany Message
+  - User hasMany Group through UserGroup
+  - Message belongsTo User
+  - Message belongsTo Group
+  - Group hasMany User through UserGroup
+  - Group hasMany Message
 
-* How to run the test suite
+###制約
 
-* Services (job queues, cache servers, search engines, etc.)
+  1. NOT NULL
+    - Usersテーブル
+      - name
+    - Messagesテーブル
+      - body
+      - group_id
+      - user_id
+    - Groupsテーブル
+      - name
+      - user_id
+      - message_id
+    - UserGroupsテーブル
+      - user_id
+      - group_id
 
-* Deployment instructions
+  1. 外部キー制約
+    - Usersテーブル
+      -group_id
+    - Messagesテーブル
+      -group_id
+      -user_id
+    - Groupsテーブル
+      -user_id
+      -message_id
+    - UserGroupsテーブル
+      -user_id
+      -group_id
 
-* ...
+###INDEX設定
+  - Usersテーブル
+    - name
+  - Messagesテーブル
+    - body
+  - Groupsテーブル
+    - name
+

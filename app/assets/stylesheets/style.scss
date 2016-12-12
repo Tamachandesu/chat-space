@@ -17,7 +17,6 @@ body{
     height: 100%;
     width: 100%;
 
-
     .chat-main {
       float: left;
       position: relative;
@@ -42,6 +41,7 @@ body{
             font-size: 20px;
             font-weight: 400;
           }
+
           .chat-header__users {
             line-height: 20px;
             color: #999;
@@ -87,7 +87,6 @@ body{
           }
         }
       }
-
 
       .chat-body{
         position: relative;

@@ -1,0 +1,60 @@
+.chat
+  .chat-side
+    .chat-user.clearfix
+      %h5 ユーザー名
+      .chat-user__actions
+        %a.chat-user__action{:href => "/"}
+          %i.fa.fa-pencil-square-o
+        %a.chat-user__action{:href => "/"}
+          %i.fa.fa-cog
+    %ul.chat-groups
+      %li.chat-group
+        %a.chat-group__link{:href => "/"}
+          %p.chat-group__name グループ名
+  .chat-main
+    .chat-header.clearfix
+      .chat-header--left
+        %h2 グループ名
+        %p.chat-header__users
+          Members:
+          %span.chat-header__user チャットメンバー１
+          %span.chat-header__user ２
+          %span.chat-header__user ３
+      .chat-header--right
+        %a.chat-header__edit-btn{:href => "/"} Edit
+    .chat-body
+      %ul.chat-messages
+        %li.chat-message
+          .chat-message__header.clearfix
+            %p.chat-message__name
+              チャットユーザー
+            %p.chat-message__time
+              20xx/xx/xx
+            %p.chat-message__body
+              メッセージ
+        %li.chat-message
+          .chat-message__header.clearfix
+            %p.chat-message__name
+              チャットユーザー
+            %p.chat-message__time
+              20xx/xx/xx
+            %p.chat-message__body
+              メッセージ
+        %li.chat-message
+          .chat-message__header.clearfix
+            %p.chat-message__name
+              チャットユーザー
+            %p.chat-message__time
+              20xx/xx/xx
+            %p.chat-message__body
+              メッセージ
+
+    .chat-footer
+      %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/chat_groups/3352/messages", :enctype => "multipart/form-data", :method => "post"}
+        %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+        %input{:name => "authenticity_token", :type => "hidden", :value => "TUN/jLN/1hE5z0E51mn2UCJ1tyqqJW3ShfUNyFrrek6GhtvvgesdAnrXBimGhOOJVhMh8WPbF+jkrp9auonWfA=="}/
+        .chat-footer__body
+          %textarea#message_body{:name => "message[body]", :placeholder => "type a message", :row => "1"}
+          %label.chat-footer__file
+            %i.fa.fa-image
+        %input{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/

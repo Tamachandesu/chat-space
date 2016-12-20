@@ -1,0 +1,19 @@
+.flashmessages {
+  .layout-notice.layout-alert {
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    font-weight: 200;
+  }
+  .layout-notice {
+    color: #fff;
+    background-color: #38aef0;
+    text-align: center;
+  }
+  .layout-alert {
+    color: #fff;
+    background-color: #d65f4c;
+    text-align: center;
+  }
+}
+

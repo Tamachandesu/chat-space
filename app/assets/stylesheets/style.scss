@@ -5,11 +5,13 @@ html {
 }
 
 body{
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  display: flex;
-  font-family: "Hiragino Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica,Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Hiragino Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica,Arial, sans-serif;
+    color: #434a54;
+    height: 100%;
+    background-color: #fafafa;
 
   .chat {
     @include clearfix();

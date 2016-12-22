@@ -17,8 +17,6 @@
   1. Groupsテーブル
     1. name(string)
     1. detail(text)
-    1. user_id(references)
-    1. message_id(references)
 
   1. UserGroupsテーブル
     1. user_id(references)

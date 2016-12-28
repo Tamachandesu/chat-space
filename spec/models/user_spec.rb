@@ -4,14 +4,14 @@ describe User do
   describe '#create' do
 
     context 'every box is filled in' do
-      let(:user){ build(:user)}
+      let(:user){ build(:user) }
       it "is valid with a nickname, email, password, password_confirmation" do
         expect(user).to be_valid
       end
     end
 
     context 'email is blank' do
-      let(:user){ build(:user, email: nil)}
+      let(:user){ build(:user, email: nil) }
       it "is invalid without an email" do
         user.valid?
         expect(user.errors[:email]).to include("を入力してください。")
@@ -19,7 +19,7 @@ describe User do
     end
 
     context 'nickname is blank' do
-      let(:user){ build(:user, nickname: nil)}
+      let(:user){ build(:user, nickname: nil) }
       it "is invalid without a nickname" do
         user.valid?
         expect(user.errors[:nickname]).to include("を入力してください。")
@@ -27,7 +27,7 @@ describe User do
     end
 
     context 'password is blank' do
-      let(:user){ build(:user, password: nil)}
+      let(:user){ build(:user, password: nil) }
       it "is invalid without a password" do
         user.valid?
         expect(user.errors[:password]).to include("を入力してください。")
@@ -35,7 +35,7 @@ describe User do
     end
 
     context 'password_confirmation is blank' do
-      let(:user){ build(:user, password_confirmation: "")}
+      let(:user){ build(:user, password_confirmation: "") }
       it "is invalid without a password_confirmation although with a password" do
         user.valid?
         expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません。")
@@ -43,7 +43,7 @@ describe User do
     end
 
     context 'email already exists' do
-      let(:user){ create(:user)}
+      let(:user){ create(:user) }
       let(:another_user){ build(:user, email: user.email)}
       it "is invalid with a duplicate email address" do
         another_user.valid?

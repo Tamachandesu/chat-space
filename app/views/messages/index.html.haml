@@ -1,27 +1,16 @@
 .chat
-  .chat-side
-    .chat-user.clearfix
-      %h5 ユーザー名
-      .chat-user__actions
-        %a.chat-user__action{:href => new_group_path }
-          %i.fa.fa-pencil-square-o
-        %a.chat-user__action{:href => "/users/edit"}
-          %i.fa.fa-cog
-    %ul.chat-groups
-      %li.chat-group
-        %a.chat-group__link{:href => "/"}
-          %p.chat-group__name グループ名
+  =render 'layouts/chatside'
   .chat-main
     .chat-header.clearfix
       .chat-header--left
-        %h2 グループ名
+        %h2= @group.name
         %p.chat-header__users
           Members:
-          %span.chat-header__user チャットメンバー１
+          %span.chat-header__user １
           %span.chat-header__user ２
           %span.chat-header__user ３
       .chat-header--right
-        %a.chat-header__edit-btn{:href => "/"} Edit
+        %a.chat-header__edit-btn{:href => edit_group_path(@group)} Edit
     .chat-body
       %ul.chat-messages
         %li.chat-message

@@ -1,0 +1,13 @@
+.chat-side
+  .chat-user.clearfix
+    %h5= @user.nickname
+    .chat-user__actions
+      %a.chat-user__action{:href => new_group_path }
+        %i.fa.fa-pencil-square-o
+      %a.chat-user__action{:href => edit_user_registration_path }
+        %i.fa.fa-cog
+  %ul.chat-groups
+    - current_user.groups.each do |group|
+      %li.chat-group
+        %a.chat-group__link{:href => group_messages_path(group) }
+          %p.chat-group__name= group.name

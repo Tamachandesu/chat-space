@@ -1,9 +1,0 @@
-.chat-footer
-  %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/chat_groups/3352/messages", :enctype => "multipart/form-data", :method => "post"}
-    %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-    %input{:name => "authenticity_token", :type => "hidden", :value => "TUN/jLN/1hE5z0E51mn2UCJ1tyqqJW3ShfUNyFrrek6GhtvvgesdAnrXBimGhOOJVhMh8WPbF+jkrp9auonWfA=="}/
-    .chat-footer__body
-      %textarea#message_body{:name => "message[body]", :placeholder => "type a message", :row => "1"}
-      %label.chat-footer__file
-        %i.fa.fa-image
-    %input{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/

@@ -6,44 +6,28 @@
         %h2= @group.name
         %p.chat-header__users
           Members:
-          %span.chat-header__user １
-          %span.chat-header__user ２
-          %span.chat-header__user ３
+          - @group.users.each do |user|
+            %span.chat-header__user
+              = user.nickname
+
       .chat-header--right
         %a.chat-header__edit-btn{href: edit_group_path(@group)} Edit
     .chat-body
       %ul.chat-messages
-        %li.chat-message
-          .chat-message__header.clearfix
-            %p.chat-message__name
-              チャットユーザー
-            %p.chat-message__time
-              20xx/xx/xx
+        - @messages.each do |message|
+          %li.chat-message
+            .chat-message__header.clearfix
+              %p.chat-message__name
+                = message.user.nickname
+              %p.chat-message__time
+                = message.created_at
             %p.chat-message__body
-              メッセージ
-        %li.chat-message
-          .chat-message__header.clearfix
-            %p.chat-message__name
-              チャットユーザー
-            %p.chat-message__time
-              20xx/xx/xx
-            %p.chat-message__body
-              メッセージ
-        %li.chat-message
-          .chat-message__header.clearfix
-            %p.chat-message__name
-              チャットユーザー
-            %p.chat-message__time
-              20xx/xx/xx
-            %p.chat-message__body
-              メッセージ
+              = message.text
 
     .chat-footer
-      %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/chat_groups/3352/messages", :enctype => "multipart/form-data", :method => "post"}
-        %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-        %input{:name => "authenticity_token", :type => "hidden", :value => "TUN/jLN/1hE5z0E51mn2UCJ1tyqqJW3ShfUNyFrrek6GhtvvgesdAnrXBimGhOOJVhMh8WPbF+jkrp9auonWfA=="}/
+      = form_for [@group, @message], remote: true, html: { multipart: true } do |f|
         .chat-footer__body
-          %textarea#message_body{:name => "message[body]", :placeholder => "type a message", :row => "1"}
+          = f.text_field :text, class: 'text-field', placeholder: 'Type a message'
           %label.chat-footer__file
             %i.fa.fa-image
-        %input{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+        = f.submit "Send" ,class: "submit", data: { disable_with: 'Sending...' }

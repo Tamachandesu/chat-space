@@ -87,6 +87,28 @@ body{
 
           .chat-message {
             margin-bottom: 40px;
+
+            .chat-message__header {
+              @include clearfix();
+              line-height: 20px;
+
+              .chat-message__name {
+                float: left;
+                margin-bottom: 10px;
+                font-weight: 600;
+              }
+
+              .chat-message__time {
+                float: left;
+                margin-left: 10px;
+                color: #aaa;
+                font-size: 12px;
+              }
+            }
+            
+            .chat-message__body {
+                font-size: 14px;
+            }
           }
         }
       }
@@ -105,14 +127,6 @@ body{
             display: list-item;
             text-align: -webkit-match-parent;
 
-            p{
-              diplay: block;
-              -webkit-margin-before: 1em;
-              -webkit-margin-after: 1em;
-              -webkit-margin-start: 0px;
-              -webkit-margin-end: 0px;
-
-            }
           }
         }
       }

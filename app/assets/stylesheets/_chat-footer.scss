@@ -17,9 +17,10 @@ $FooterColorGray: #ddd;
       height: 50px;
       position: relative;
 
-      textarea {
-        width: 100%;
-        padding: 10px 0 0 10px;
+      .text-field {
+        width: calc(100% - 20px);
+        height: 30px;
+        padding: 10px 10px 10px 10px;
         line-height: 20px;
         border: none;
         resize: none;
@@ -35,12 +36,24 @@ $FooterColorGray: #ddd;
         height: 50px;
         line-height: 50px;
         text-align: center;
+        /* cursor: pointer; */
+      }
+
+      .file-field {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        width: 40px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
         cursor: pointer;
 
       }
     }
 
-    input {
+    .submit {
       float: left;
       display: inline-block;
       width: 100px;

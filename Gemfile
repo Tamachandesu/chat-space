@@ -36,7 +36,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'faker'
-  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -55,4 +54,3 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'pry-rails'
-gem 'rails-i18n'

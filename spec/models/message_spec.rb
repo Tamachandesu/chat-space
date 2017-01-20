@@ -12,7 +12,7 @@ describe Message do
     end
 
     context 'text box is blank' do
-      let(:message){ build(:message, text: nil) }
+      let(:message){ build(:empty_message) }
       it "is invalid without a text" do
         message.valid?
         expect(message.errors[:text]).to include("を入力してください。")

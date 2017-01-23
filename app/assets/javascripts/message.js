@@ -8,14 +8,13 @@ $(function() {
     e.preventDefault();
     var textField = $('#message_body');
     var message = textField.val();
+    var text = message =>{
+                text: textField.val()
+              }
     $.ajax({
       type: 'POST',
       url: '/message.json',
-      data: {
-        message: {
-          text: textField.val()
-        }
-      },
+      data: text,
       dataType: 'json'
     })
     .done(function(data) {

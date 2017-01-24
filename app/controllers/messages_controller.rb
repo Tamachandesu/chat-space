@@ -14,7 +14,8 @@ class MessagesController < ApplicationController
         format.html {redirect_to group_messages_path(@group), notice: 'メッセージを送信しました'}
         format.json {render json: {message: {text: @message.text}}}
       else
-        format.html {redirect_to group_messages_path(@group), alert: 'メッサージを入力してください'}
+        format.html {redirect_to group_messages_path(@group), alert: 'エラーが発生しました'}
+        format.json {render json: {message: {text: @message.text}}}
       end
     end
   end

@@ -6,15 +6,12 @@ $(function() {
 
   $('.new-message').on('submit', function(e) {
     e.preventDefault();
-    var textField = $('#message_body');
-    var message = textField.val();
-    var text = message =>{
-                text: textField.val()
-              }
+    var textField = $('#message_body').val();
+
     $.ajax({
       type: 'POST',
       url: '/message.json',
-      data: text,
+      data: textField,
       dataType: 'json'
     })
     .done(function(data) {
@@ -23,7 +20,7 @@ $(function() {
       textField.val('');
     })
     .fail(function() {
-      alert('error');
+      alert('エラーが発生しました');
     });
   });
 });

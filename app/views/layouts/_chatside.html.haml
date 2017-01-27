@@ -9,5 +9,5 @@
   %ul.chat-groups
     - current_user.groups.each do |group|
       %li.chat-group
-        %a.chat-group__link{href: group_messages_path(group) }
+        = link_to group_messages_path(group), class: 'chat-group__link' do
           %p.chat-group__name= group.name

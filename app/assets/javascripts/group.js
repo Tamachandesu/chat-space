@@ -25,35 +25,46 @@ $(function(){
     return html
   }
 
-  function searchUsers() {
+  function editElement(element) {
+    var result = "^" + element;
+    return result;
+  }
+
+  $('#user-search-field').on('keyup', function() {
+    var preWord;
+    var input = $('#user-search-field').val();
+    var inputs = input.split(" ").filter(function(e) {return e;});
+    var newInputs = inputs.map(editElement);
+    var word = newInputs.join("|");
+
     $.ajax('/users.json', {
       method: 'GET',
       data: {
-        nickname: $('#user-search-field').val()
-      },
+        nickname: input
+        },
       dataType: 'json',
-      success: function(json) {
-        var insertHTML = '';
+      })
+    .done(function(users) {
+      var insertHTML = '';
 
-        json.forEach(function(user){
+      if(input !== preWord && input.length !== 0) {
+        $.each(users, (function(i, user){
           insertHTML += buildAddUserHTML(user);
-        });
-
-        $('#user-search-result').html(insertHTML);
-      },
-      error: function(json) {
-        alert('エラーが発生しました');
-      }
+        }));
+      };
+      $('#user-search-result').html(insertHTML);
+      preword = word;
+    })
+    .fail(function() {
+      alert('エラーが発生しました');
     });
-  }
+  });
 
-  $('#user-search-field').on('change keyup', searchUsers);
 
   $('#user-search-result').on('click', '.user-search-add', function(){
     var $this = $(this);
     var id = $this.data('userId');
     var name = $this.data('userNickname');
-
     var insertHTML = buildUserHTML(id, name);
 
     $('#chat-group-users').append(insertHTML);

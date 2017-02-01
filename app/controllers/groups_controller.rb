@@ -14,9 +14,9 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-    redirect_to group_messages_path(@group), notice: 'チャットグループが作成されました'
+      redirect_to group_messages_path(@group), notice: 'チャットグループが作成されました'
     else
-      render :new
+      redirect_to new_group_path, alert: 'チャットグループの作成に失敗しました'
     end
   end
 
@@ -25,9 +25,9 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-    redirect_to group_messages_path(@group), notice: 'チャットグループが更新されました'
+      redirect_to group_messages_path(@group), notice: 'チャットグループが更新されました'
     else
-      render :edit
+      redirect_to edit_group_path(@group), alert: 'チャットグループの更新に失敗しました'
     end
   end
 

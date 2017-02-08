@@ -11,11 +11,12 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html {redirect_to group_messages_path(@group), notice: 'メッセージを送信しました'}
-        format.json {render json: {message: {text: @message.text}}}
+        format.json {redirect_to json: {message:
+                                        {text: @message.text,
+                                        image: @message.image.url}}}
+        format.html {redirect_to group_messages_path @group, @message}
       else
         format.html {redirect_to group_messages_path(@group), alert: 'エラーが発生しました'}
-        format.json {render json: {message: {text: @message.text}}}
       end
     end
   end

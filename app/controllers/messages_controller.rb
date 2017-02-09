@@ -9,15 +9,12 @@ class MessagesController < ApplicationController
   def create
     @message = @group.messages.new(message_params)
 
-    respond_to do |format|
-      if @message.save
-        format.json {redirect_to json: {message:
-                                        {text: @message.text,
-                                        image: @message.image.url}}}
-        format.html {redirect_to group_messages_path @group, @message}
-      else
-        format.html {redirect_to group_messages_path(@group), alert: 'エラーが発生しました'}
-      end
+    if @message.save
+      redirect_to json: {message:
+                            {text: @message.text,
+                            image: @message.image.url}}
+    else
+      format.html {redirect_to group_messages_path(@group), alert: 'エラーが発生しました'}
     end
   end
 

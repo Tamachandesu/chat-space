@@ -105,9 +105,14 @@ body{
                 font-size: 12px;
               }
             }
-            
+
             .chat-message__body {
-                font-size: 14px;
+              font-size: 14px;
+
+              .chat-message__image {
+                width: 600px;
+                height: 600px;
+              }
             }
           }
         }

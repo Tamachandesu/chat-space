@@ -109,6 +109,10 @@ body{
             .chat-message__body {
               font-size: 14px;
 
+              .chat-message__image {
+                width: 600px;
+                height: 600px;
+              }
             }
           }
         }

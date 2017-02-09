@@ -3,7 +3,7 @@ $(function() {
     var buildImage = "";
 
     if(message.image) {
-      buildImage = '<img src= ' + message.image +'>'
+      buildImage = '<img class="chat-message__image" src= ' + message.image +'>'
     } else {
       buildImage = ""
     }
@@ -31,7 +31,6 @@ $(function() {
       processData: false,
       contentType: false,
       dataType: 'json'
-      format: 'js'
     })
 
     .done(function(data) {

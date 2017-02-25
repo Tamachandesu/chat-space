@@ -6,9 +6,9 @@ class Message < ApplicationRecord
   validates :text, presence: true
 
   def to_json
-    { name: user.nickname,
+    { nickname: user.nickname,
       created_at: created_at,
-      body: body,
+      text: text,
       image: image.url }
   end
 end

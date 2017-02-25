@@ -4,17 +4,25 @@ class MessagesController < ApplicationController
     @user = current_user
     @message = Message.new
     @messages = @group.messages
+
+    respond_to do |format|
+      format.any
+      format.json { render json: @messages.map { |message| message.to_json } }
+    end
   end
 
   def create
     @message = @group.messages.new(message_params)
 
     if @message.save
-      redirect_to json: {message:
-                            {text: @message.text,
-                            image: @message.image.url}}
-    else
-      format.html {redirect_to group_messages_path(@group), alert: 'エラーが発生しました'}
+      respond_to do |format|
+        format.json { render json:
+                      { message:
+                        { nickname: current_user.nickname,
+                          created_at: @message.created_at,
+                          text: @message.text,
+                          image: @message.image.url }}}
+      end
     end
   end
 

@@ -33,4 +33,4 @@
           %label.chat-footer__file
             = f.file_field :image
             %i.fa.fa-image
-        = f.submit "Send" ,class: "submit", data: { disable_with: 'Sending...' }
+        = f.submit "Send" , id: "submit", data: { disable_with: 'Sending...' }

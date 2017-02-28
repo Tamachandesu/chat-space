@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function() {
     })
 
     .done(function(data) {
-      var html = sendMessage(data.message);
+      var html = sendMessage(data);
       $('.chat-messages').append(html);
       $('#message_text').val('');
       moveToBottom();
@@ -65,6 +65,9 @@ $(document).on('turbolinks:load', function() {
           insertHtml += sendMessage(data[i]);
         };
           $('.chat-messages').html(insertHtml);
+      })
+      .fail(function(){
+        alert('エラーが発生しました。');
       })
     },10 * 1000);
   };

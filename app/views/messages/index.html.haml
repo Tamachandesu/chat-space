@@ -27,7 +27,7 @@
               = image_tag(message.image)
 
     .chat-footer
-      = form_for [@group, @message], remote: true, authenticity_token: true do |f|
+      = form_for [@group, @message] do |f|
         .chat-footer__body
           = f.text_field :text, class: 'text-field', placeholder: 'Type a message'
           %label.chat-footer__file

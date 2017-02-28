@@ -3,18 +3,27 @@ class MessagesController < ApplicationController
   def index
     @user = current_user
     @message = Message.new
-    @messages = @group.messages
+    @messages = @group.messages.includes(:user)
+
+    respond_to do |format|
+      format.any
+      format.json { render json: @messages.map { |message| message.to_json } }
+    end
   end
 
   def create
     @message = @group.messages.new(message_params)
 
     if @message.save
-      redirect_to json: {message:
-                            {text: @message.text,
-                            image: @message.image.url}}
+      respond_to do |format|
+        format.any
+        format.json do
+         render json: @message.to_json
+        end
+      end
+      flash[:notice] = "メッセージを送信しました。"
     else
-      format.html {redirect_to group_messages_path(@group), alert: 'エラーが発生しました'}
+      flash[:alert] = "メッセージを送信できませんでした。"
     end
   end
 

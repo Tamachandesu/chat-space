@@ -27,10 +27,10 @@
               = image_tag(message.image)
 
     .chat-footer
-      = form_for [@group, @message], remote: true, authenticity_token: true do |f|
+      = form_for [@group, @message] do |f|
         .chat-footer__body
           = f.text_field :text, class: 'text-field', placeholder: 'Type a message'
           %label.chat-footer__file
             = f.file_field :image
             %i.fa.fa-image
-        = f.submit "Send" ,class: "submit", data: { disable_with: 'Sending...' }
+        = f.submit "Send" , id: "submit", data: { disable_with: 'Sending...' }

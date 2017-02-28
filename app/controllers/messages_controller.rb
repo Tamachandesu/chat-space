@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def index
     @user = current_user
     @message = Message.new
-    @messages = @group.messages
+    @messages = @group.messages.includes(:user)
 
     respond_to do |format|
       format.any
@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
 
     if @message.save
       respond_to do |format|
+        format.any
         format.json { render json:
                       { message:
                         { nickname: current_user.nickname,
@@ -23,6 +24,9 @@ class MessagesController < ApplicationController
                           text: @message.text,
                           image: @message.image.url }}}
       end
+      flash[:notice] = "メッセージを送信しました。"
+    else
+      flash[:alert] = "メッセージを送信できませんでした。"
     end
   end
 
